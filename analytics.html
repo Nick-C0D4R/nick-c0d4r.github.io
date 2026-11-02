@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Аналітика Нової Зеландії - Економічна Безпека</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <header>
+      <div>
+        <nav>
+          <ul>
+            <li><a href="index.html">Головна</a></li>
+            <li><a href="analytics.html" class="active">Аналітика</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <section>
+        <h1>Аналіз Економічної Безпеки Нової Зеландії</h1>
+        <p>
+          Оцінка відповідності індикаторів пороговим значенням за даними
+          Світового банку
+        </p>
+      </section>
+
+      <!-- Summary Status Cards -->
+      <section class="metrics-grid">
+        <div class="metric-card status-optimal">
+          <h3>Демографія та Медицина</h3>
+          <p class="status-val">Оптимальний рівень</p>
+          <small>Тривалість життя: 82.9 р. | Дитяча смертність: 4.2‰</small>
+        </div>
+        <div class="metric-card status-warning">
+          <h3>Наука та R&D</h3>
+          <p class="status-val">Задовільний рівень</p>
+          <small>Витрати на R&D: ~1.46%–1.55% ВВП</small>
+        </div>
+        <div class="metric-card status-danger">
+          <h3>Торгівля та Борг</h3>
+          <p class="status-val">Критичний / Незадовільний</p>
+          <small>Покриття імпорту експортом: ~0.89 | Борг: 50.2% ВВП</small>
+        </div>
+      </section>
+
+      <!-- Data Table -->
+      <section class="card">
+        <h2>Ключові показники та порогові значення</h2>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>№</th>
+                <th>Показник</th>
+                <th>Фактичне значення</th>
+                <th>Оптимальний інтервал</th>
+                <th>Оцінка рівню безпеки</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Урожайність зернових культур</td>
+                <td>~82.4 ц/га (8 244 кг/га)</td>
+                <td>[45; 55] ц/га</td>
+                <td>
+                  <span class="badge danger"
+                    >Критичний / Абсолютна небезпека</span
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Очікувана тривалість життя при народженні</td>
+                <td>82.9 років</td>
+                <td>[78; ∞) років</td>
+                <td><span class="badge optimal">Оптимальний</span></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Смертність немовлят (на 1000 народжених)</td>
+                <td>4.2 випадків</td>
+                <td>[0; 4] випадків</td>
+                <td><span class="badge warning">Задовільний</span></td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Коефіцієнт покриття імпорту експортом</td>
+                <td>0.89 (Експорт 23.7% / Імпорт 26.7%)</td>
+                <td>[1.0; 1.2]</td>
+                <td>
+                  <span class="badge danger">Критичний / Незадовільний</span>
+                </td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>Витрати на R&D (% від ВВП)</td>
+                <td>1.46% – 1.55%</td>
+                <td>[3.0; ∞)%</td>
+                <td>
+                  <span class="badge warning">Задовільний / Незадовільний</span>
+                </td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>Нерівність доходів (10% найбагатших / 10% найбідніших)</td>
+                <td>~5.5 разів</td>
+                <td>[1.0; 4.5] разів</td>
+                <td>
+                  <span class="badge danger">Небезпечний / Незадовільний</span>
+                </td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>Борг центрального уряду (% від ВВП)</td>
+                <td>50.2%</td>
+                <td>[0; 20]%</td>
+                <td>
+                  <span class="badge danger">Незадовільний / Небезпечний</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Charts Section -->
+      <section class="card">
+        <h2>Візуалізація показників</h2>
+        <div class="charts-grid">
+          <div class="chart-container">
+            <canvas id="tradeChart"></canvas>
+          </div>
+          <div class="chart-container">
+            <canvas id="macroChart"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <!-- Trends and Threats -->
+      <section class="grid-2col">
+        <div class="card">
+          <h2>Безпечні та небезпечні тенденції</h2>
+          <ul class="trend-list">
+            <li class="trend-item pos">
+              <strong>Позитивна тенденція:</strong> Високий розвиток охорони
+              здоров’я зберігає тривалість життя понад 82.5 років і низьку
+              дитячу смертність.
+            </li>
+            <li class="trend-item pos">
+              <strong>Позитивна тенденція:</strong> Стабільне фінансування
+              наукових досліджень (~1.5% ВВП) підтримує інноваційну
+              спроможність.
+            </li>
+            <li class="trend-item neg">
+              <strong>Небезпечна тенденція:</strong> Від'ємне сальдо зовнішньої
+              торгівлі та покриття імпорту експортом нижче 1.
+            </li>
+            <li class="trend-item neg">
+              <strong>Небезпечна тенденція:</strong> Зростання державного боргу
+              до 50.2% ВВП створює навантаження на бюджет.
+            </li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2>Основні загрози та рекомендації</h2>
+          <h3>Загрози:</h3>
+          <ul>
+            <li>
+              Вразливість до коливань світових цін на сільськогосподарський
+              експорт.
+            </li>
+            <li>Зростання витрат на обслуговування державного боргу.</li>
+            <li>
+              Помірний рівень інвестицій у R&D у порівнянні з лідерами OECD.
+            </li>
+          </ul>
+          <h3>Стратегічні рекомендації:</h3>
+          <ul>
+            <li>Диверсифікація експорту товарів з високою доданою вартістю.</li>
+            <li>
+              Фіскальна консолідація для зниження держборгу до безпечного рівня
+              (<40% ВВП).
+            </li>
+            <li>Стимулювання R&D інвестицій до рівня понад 2% ВВП.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Summary Conclusion -->
+      <section class="card">
+        <h2>Узагальнений аналітичний висновок</h2>
+        <p>
+          Економічна безпека Нової Зеландії має
+          <strong>високий соціально-демографічний потенціал</strong> завдяки
+          ефективній системі охорони здоров'я та високому рівню життя. Водночас
+          <strong
+            >макроекономічний та фінансово-торговельний сектори зазнають
+            навантаження</strong
+          >
+          через від'ємне торгове сальдо та високий рівень державного боргу. Для
+          підвищення рівня економічної безпеки країні необхідно диверсифікувати
+          експортні потоки та нарощувати витрати на інноваційні дослідження.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>
+          &copy; 2026 Автор: Аналітик економічної безпеки. Всі права захищено.
+        </p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
